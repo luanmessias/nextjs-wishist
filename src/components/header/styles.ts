@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { deviceSizes, maxDevice } from '@globalStyles/device'
-import { mainColor, defaultTransition } from '@globalStyles/placeholders'
+import { deviceSizes, maxDevice } from '~/styles/device'
+import { mainColor, defaultTransition } from '~/styles/placeholders'
 import { darken } from 'polished'
-import LogoSVG from '@svg/logo'
+import LogoSVG from '~/assets/svg/logo'
 
 export const Container = styled.header`
   display: flex;
@@ -14,7 +14,6 @@ export const Container = styled.header`
   background-color: ${mainColor};
   border-top: 8px solid ${darken(0.15, mainColor)};
   height: 150px;
-  overflow: hidden;
 
   @media ${maxDevice.laptop} {
     height: auto;
@@ -107,6 +106,29 @@ export const HeaderLinksList = styled.div`
 
   @media ${maxDevice.laptop} {
     margin: 10px 0px;
+  }
+`
+
+export const HeaderInfo = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s;
+
+  @media ${maxDevice.mobileL} {
+    align-items: flex-start;
+    padding: 10px 5px;
+    width: 100%;
+  }
+
+  svg {
+    width: 15px;
+    height: auto;
+    margin-right: 5px;
   }
 `
 

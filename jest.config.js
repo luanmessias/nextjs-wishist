@@ -14,10 +14,12 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/'],
   moduleNameMapper: {
-    '@services/(.*)': '<rootDir>/src/services/$1',
-    '@hooks/(.*)': '<rootDir>/src/hooks/$1',
-    '@globalStyles/(.*)': '<rootDir>/src/styles/$1',
-    '@components/(.*)': '<rootDir>/src/components/$1',
-    '@svg/(.*)': '<rootDir>/src/assets/svg/$1'
+    '~/assets/(.*)': ['<rootDir>/src/assets/$1'],
+    '~/components/(.*)': ['<rootDir>/src/components/$1'],
+    '~/contexts/(.*)': ['<rootDir>/src/contexts/$1'],
+    '~/mocks/(.*)': ['<rootDir>/src/mocks/$1'],
+    '~/pages/(.*)': ['<rootDir>/src/pages/$1'],
+    '~/services/(.*)': ['<rootDir>/src/services/$1'],
+    '~/styles/(.*)': ['<rootDir>/src/styles/$1']
   }
 }
