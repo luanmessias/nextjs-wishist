@@ -1,0 +1,33 @@
+{
+  "presets": ["next/babel", "@babel/preset-typescript"],
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "minify": true,
+        "transpileTemplateLiterals": true,
+        "pure": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "minify": true,
+            "transpileTemplateLiterals": true,
+            "pure": true,
+            "displayName": true,
+            "preprocess": false
+          }
+        ]
+      ]
+    }
+  }
+}

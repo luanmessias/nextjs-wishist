@@ -1,6 +1,6 @@
 import React from 'react'
 import { SearchContainer, SearchInput } from './styles'
-import SearchSVG from '@svg/search.svg'
+import SearchSVG from '@svg/search'
 
 const SearchBar = (): JSX.Element => {
   return (

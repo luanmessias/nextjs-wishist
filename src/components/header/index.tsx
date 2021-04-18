@@ -9,9 +9,9 @@ import {
 } from './styles'
 import Link from 'next/link'
 import SearchBar from '@components/SearchBar'
-import LocationSVG from '@svg/location.svg'
-import HeartSVG from '@svg/heart.svg'
-import PhoneSVG from '@svg/phone.svg'
+import LocationSVG from '@svg/location'
+import HeartSVG from '@svg/heart'
+import PhoneSVG from '@svg/phone'
 
 const headerLinks = [
   {
@@ -49,7 +49,7 @@ function Header(): JSX.Element {
     <Container>
       <Content className="header">
         <div className="header__col--logo">
-          <Logo />
+          <Logo data-testid="logo" />
         </div>
         <div className="header__col--mobmenu">
           <MobMenu

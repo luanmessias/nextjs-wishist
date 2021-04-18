@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { deviceSizes, maxDevice } from '@globalStyles/device'
 import { mainColor, defaultTransition } from '@globalStyles/placeholders'
 import { darken } from 'polished'
-import LogoSVG from '@svg/logo.svg'
+import LogoSVG from '@svg/logo'
 
 export const Container = styled.header`
   display: flex;

@@ -23,7 +23,7 @@
       "@hooks/*":         ["./src/hooks/*"],
       "@globalStyles/*":  ["./src/styles/*"],
       "@components/*":    ["./src/components/*"],
-      "@svg/*":           ["./public/svg/*"],
+      "@svg/*":           ["./src/assets/svg/*"],
     }
   },
   "include": [
