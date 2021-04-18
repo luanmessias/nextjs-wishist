@@ -30,7 +30,11 @@ function Header(): JSX.Element {
     <Container>
       <Content className="header">
         <div className="header__col--logo">
-          <Logo data-testid="logo" />
+          <Link href="/">
+            <a href="">
+              <Logo data-testid="logo" />
+            </a>
+          </Link>
         </div>
         <div className="header__col--mobmenu">
           <MobMenu
@@ -55,7 +59,7 @@ function Header(): JSX.Element {
               </HeaderLink>
             </Link>
 
-            <Link href="/">
+            <Link href="wishlist">
               <HeaderLink href="">
                 <HeartSVG />
                 <span>Lista de desejos</span>

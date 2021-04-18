@@ -47,7 +47,7 @@ const GetProductsProvider = ({
   const { data, error } = getApiData('products')
 
   if (error) return <h1>Erro ao carregar produtos</h1>
-  if (!data) return <h1>Loading...</h1>
+  if (!data) return <div></div>
 
   if (data && productsList.length === 0) {
     setProductList(data)
