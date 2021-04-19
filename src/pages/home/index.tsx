@@ -1,11 +1,18 @@
 import React from 'react'
 import { Container } from './styles'
+import { useGetProductsContext } from '~/contexts/GetProducts'
+import ProductCard from '~/components/ProductCard'
 
 function Home() {
+  const { productsList } = useGetProductsContext()
+  const { products } = productsList
+
   return (
     <>
       <Container>
-        <div>Home page</div>
+        {products.map(({ id, sku }) => {
+          return <ProductCard key={id} sku={sku} />
+        })}
       </Container>
     </>
   )

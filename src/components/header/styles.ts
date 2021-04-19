@@ -14,6 +14,7 @@ export const Container = styled.header`
   background-color: ${mainColor};
   border-top: 8px solid ${darken(0.15, mainColor)};
   height: 150px;
+  z-index: 999;
 
   @media ${maxDevice.laptop} {
     height: auto;
@@ -53,6 +54,7 @@ export const Content = styled.div`
         width: 100%;
         max-width: 700px;
         height: 100%;
+        z-index: 999;
 
         @media ${maxDevice.laptop} {
           margin: 10px 0px;

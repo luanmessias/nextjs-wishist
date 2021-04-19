@@ -8,6 +8,7 @@ export const defaultTransition = css`
 `
 export const pageContainer = css`
   display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: 10px;
   width: 100%;

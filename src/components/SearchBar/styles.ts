@@ -4,6 +4,7 @@ import { mainColor, defaultTransition } from '~/styles/placeholders'
 export const Container = styled.div`
   display: flex;
   position: relative;
+  z-index: 999;
 `
 
 export const SearchBarContainer = styled.div`
