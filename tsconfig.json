@@ -24,6 +24,7 @@
       "~/contexts/*":  ["./src/contexts/*"],
       "~/mocks/*":  ["./src/mocks/*"],
       "~/pages/*":  ["./src/pages/*"],
+      "~/reducers/*":  ["./src/reducers/*"],
       "~/services/*":  ["./src/services/*"],
       "~/styles/*":  ["./src/styles/*"],
       "~/utils/*":  ["./src/utils/*"],

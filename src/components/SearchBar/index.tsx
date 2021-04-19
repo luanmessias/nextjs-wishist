@@ -8,7 +8,7 @@ import {
   SearchResultCard
 } from './styles'
 import SearchSVG from '~/assets/svg/search'
-import { useGetProductsContext } from '~/contexts/GetProducts'
+import { useGetProductsContext } from '~/contexts/GetProductsContext'
 
 const SearchBar = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('')

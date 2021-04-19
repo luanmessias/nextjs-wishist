@@ -1,6 +1,21 @@
 import React from 'react'
-import Home from '~/pages/home'
+import { Container } from '~/styles/pages/home'
+import { useGetProductsContext } from '~/contexts/GetProductsContext'
+import ProductCard from '~/components/ProductCard'
 
-const Index = () => <Home />
+function Home() {
+  const { productsList } = useGetProductsContext()
+  const { products } = productsList
 
-export default Index
+  return (
+    <>
+      <Container>
+        {products.map(({ id, sku }) => {
+          return <ProductCard key={id} sku={sku} />
+        })}
+      </Container>
+    </>
+  )
+}
+
+export default Home

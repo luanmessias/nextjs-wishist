@@ -167,7 +167,7 @@ export const WishListButton = styled.div`
     }
   }
 
-  &[data-active='true'] {
+  &[data-selected='true'] {
     background-color: #000;
     .svgContainer {
       svg {

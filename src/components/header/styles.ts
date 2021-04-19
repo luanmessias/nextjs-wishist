@@ -24,7 +24,6 @@ export const Container = styled.header`
     height: 55px;
   }
 `
-
 export const Content = styled.div`
   display: flex;
   align-items: center;
@@ -88,7 +87,6 @@ export const Content = styled.div`
     }
   }
 `
-
 export const Logo = styled(LogoSVG)`
   width: 150px;
 
@@ -110,7 +108,6 @@ export const HeaderLinksList = styled.div`
     margin: 10px 0px;
   }
 `
-
 export const HeaderInfo = styled.div`
   display: flex;
   align-items: center;
@@ -133,7 +130,6 @@ export const HeaderInfo = styled.div`
     margin-right: 5px;
   }
 `
-
 export const HeaderLink = styled.a`
   display: flex;
   align-items: center;
@@ -144,6 +140,7 @@ export const HeaderLink = styled.a`
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s;
+  position: relative;
 
   @media ${maxDevice.mobileL} {
     align-items: flex-start;
@@ -210,5 +207,21 @@ export const MobMenu = styled.div`
       top: 50%;
       transform: rotate(-45deg);
     }
+  }
+`
+export const WishListLenght = styled.div`
+  background-color: #c90808;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  border-radius: 50%;
+  font-size: 11px;
+  &[data-active='true'] {
+    display: flex;
   }
 `

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {
   Container,
   Content,
@@ -6,16 +6,20 @@ import {
   MobMenu,
   HeaderLinksList,
   HeaderInfo,
-  HeaderLink
+  HeaderLink,
+  WishListLenght
 } from './styles'
 import Link from 'next/link'
+import { WihshListContext } from '~/contexts/WishListContext'
 import SearchBar from '~/components/SearchBar'
 import LocationSVG from '~/assets/svg/location'
 import HeartSVG from '~/assets/svg/heart'
 import PhoneSVG from '~/assets/svg/phone'
 
 function Header(): JSX.Element {
+  const { wishlist } = useContext(WihshListContext)
   const [mobileMenu, setMobileMenu] = useState(false)
+  const [wishNumber, setWishNumber] = useState(false)
 
   useEffect(() => {
     const disableMobileMenu = () => {
@@ -25,6 +29,14 @@ function Header(): JSX.Element {
     }
     window.addEventListener('resize', disableMobileMenu)
   }, [])
+
+  useEffect(() => {
+    if (wishlist.length) {
+      setWishNumber(true)
+    } else {
+      setWishNumber(false)
+    }
+  }, [wishlist])
 
   return (
     <Container>
@@ -61,6 +73,9 @@ function Header(): JSX.Element {
 
             <Link href="wishlist">
               <HeaderLink href="">
+                <WishListLenght data-active={wishNumber}>
+                  {wishlist.length}
+                </WishListLenght>
                 <HeartSVG />
                 <span>Lista de desejos</span>
               </HeaderLink>

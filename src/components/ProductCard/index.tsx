@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Container, WishListButton } from './styles'
-import { useGetProductsContext } from '~/contexts/GetProducts'
+import { useGetProductsContext } from '~/contexts/GetProductsContext'
+import { WihshListContext } from '~/contexts/WishListContext'
 import Image from 'next/image'
 import { FormatPriceCents } from '~/utils/FormatPriceCents'
 import NumberFormat from 'react-number-format'
@@ -8,8 +9,27 @@ import TruckSVG from '~/assets/svg/truck'
 import HeartSVG from '~/assets/svg/heart'
 
 function ProductCard({ sku }) {
-  const { productsList }: { productsList } = useGetProductsContext()
+  const { wishlist, dispatch } = useContext(WihshListContext)
+  const { productsList } = useGetProductsContext()
+  const [selectedWish, setSelectedWish] = useState(false)
   const product = productsList.products.find(prod => prod.sku === sku)
+  const isFavorited = wishlist.find(e => e === sku)
+
+  useEffect(() => {
+    if (isFavorited !== undefined) {
+      setSelectedWish(true)
+    }
+  }, [])
+
+  const handleAddProduct = () => {
+    if (isFavorited === undefined) {
+      setSelectedWish(true)
+      dispatch({ type: 'ADD_PRODUCT', sku })
+    } else {
+      setSelectedWish(false)
+      dispatch({ type: 'REMOVE_PRODUCT', sku })
+    }
+  }
 
   const {
     availableSizes,
@@ -29,7 +49,7 @@ function ProductCard({ sku }) {
 
   return (
     <Container>
-      <WishListButton>
+      <WishListButton onClick={handleAddProduct} data-selected={selectedWish}>
         <div className="svgContainer">
           <HeartSVG />
         </div>
