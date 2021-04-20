@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { GetProductsContext } from '~/contexts/GetProducts'
+import { GetProductsContext } from '~/contexts/GetProductsContext'
 import { productsList } from '~/mocks/productsList'
-import Header from '.'
+import Header from '~/components/header'
 
 const renderComponent = () => {
   render(

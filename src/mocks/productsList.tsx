@@ -17,7 +17,7 @@ export const productsList = {
       currencyId: 'BRL',
       currencyFormat: 'R$',
       isFreeShipping: true,
-      image: 'https://via.placeholder.com/300x300'
+      image: '/mock.jpg'
     },
     {
       id: 0,
@@ -36,7 +36,7 @@ export const productsList = {
       currencyId: 'BRL',
       currencyFormat: 'R$',
       isFreeShipping: true,
-      image: 'https://via.placeholder.com/300x300'
+      image: '/mock.jpg'
     },
     {
       id: 0,
@@ -55,7 +55,7 @@ export const productsList = {
       currencyId: 'BRL',
       currencyFormat: 'R$',
       isFreeShipping: true,
-      image: 'https://via.placeholder.com/300x300'
+      image: '/mock.jpg'
     }
   ]
 }

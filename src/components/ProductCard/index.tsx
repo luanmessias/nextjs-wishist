@@ -55,7 +55,7 @@ function ProductCard({ sku }) {
 
   return (
     <>
-      <Container>
+      <Container data-testid="ProductCard">
         <WishListButton onClick={handleAddProduct} data-selected={selectedWish}>
           <div className="svgContainer">
             {pathname !== '/wishlist' && (

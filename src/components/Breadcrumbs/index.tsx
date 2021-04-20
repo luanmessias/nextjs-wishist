@@ -38,7 +38,7 @@ export const Breadcrumbs = () => {
   }
 
   return (
-    <Container aria-label="breadcrumbs">
+    <Container data-testid="breadcrumbs">
       <ul className="breadcrumb">
         <li>
           <Link href="/">

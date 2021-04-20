@@ -5,7 +5,7 @@ import BlockSVG from '~/assets/svg/block'
 
 function NotFound({ msg }) {
   return (
-    <Container>
+    <Container data-testid="NotFound">
       <BlockSVG />
       <div>{msg}</div>
       <Link href="/">
