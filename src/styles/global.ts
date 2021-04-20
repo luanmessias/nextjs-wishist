@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { ResetCSS } from '~/styles/reset'
+import { ToastfyStylesCSS } from '~/styles/toast'
 
 export default createGlobalStyle`
   ${ResetCSS}
@@ -14,5 +15,7 @@ export default createGlobalStyle`
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-weight: 400;
   }
+
+  ${ToastfyStylesCSS}
 
 `

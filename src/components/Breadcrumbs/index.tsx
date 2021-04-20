@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { Container } from './styles'
 
 const convertBreadcrumb = string => {
-  return string
+  const breadcrumb = string
     .replace(/-/g, ' ')
     .replace(/oe/g, 'ö')
     .replace(/ae/g, 'ä')
     .replace(/ue/g, 'ü')
+
+  return <div>{breadcrumb}</div>
 }
 
 export const Breadcrumbs = () => {
@@ -43,7 +45,7 @@ export const Breadcrumbs = () => {
             <a href="">Home</a>
           </Link>
         </li>
-        {breadcrumbs.map(({ href, breadcrumb }, i) => {
+        {breadcrumbs.map(({ href, breadcrumb }) => {
           return (
             <li key={href}>
               <Link href={href}>

@@ -1,14 +1,12 @@
 import styled from 'styled-components'
-import { pageContainer } from '~/styles/placeholders'
 
 export const Container = styled.nav`
-  ${pageContainer}
+  padding: 10px 0px;
   ul {
     display: flex;
     flex-direction: row;
     list-style: none;
     width: 100%;
-    border-bottom: 1px solid #ccc;
 
     li {
       display: flex;
@@ -20,11 +18,13 @@ export const Container = styled.nav`
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        &:before {
-          color: #818181;
-          content: '|';
-          margin-right: 5px;
-          font-size: 12px;
+        div {
+          &:before {
+            color: #818181;
+            content: '>';
+            margin-right: 5px;
+            font-size: 12px;
+          }
         }
       }
 

@@ -126,7 +126,7 @@ export const HeaderInfo = styled.div`
 
   svg {
     width: 15px;
-    height: auto;
+    height: 15px;
     margin-right: 5px;
   }
 `
@@ -150,7 +150,7 @@ export const HeaderLink = styled.a`
 
   svg {
     width: 15px;
-    height: auto;
+    height: 15px;
     margin-right: 5px;
   }
 `

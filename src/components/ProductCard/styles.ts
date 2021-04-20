@@ -133,7 +133,8 @@ export const WishListButton = styled.div`
   position: absolute;
   z-index: 9;
   background-color: #919191;
-  padding: 15px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   cursor: pointer;
   ${defaultTransition}
@@ -149,10 +150,15 @@ export const WishListButton = styled.div`
       width: 100%;
       ${defaultTransition}
     }
+
+    > div {
+      width: 15px;
+      height: 15px;
+    }
   }
 
   &:hover {
-    background-color: #000;
+    background-color: #7d7d7d;
     transform: scale(1.1);
     .svgContainer {
       width: 15px;
@@ -167,12 +173,24 @@ export const WishListButton = styled.div`
     }
   }
 
+  &[data-active='false'] {
+    display: none;
+  }
+
   &[data-selected='true'] {
-    background-color: #000;
+    background-color: #7d7d7d;
     .svgContainer {
       svg {
         path {
           fill: red;
+        }
+      }
+
+      &__remove {
+        svg {
+          path {
+            fill: #fff;
+          }
         }
       }
     }
