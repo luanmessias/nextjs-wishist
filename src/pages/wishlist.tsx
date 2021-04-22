@@ -6,23 +6,20 @@ import NotFound from '~/components/NotFound'
 import LoadingSpinner from '~/components/LoadingSpinner'
 
 function Wishlist() {
-  const { wishlist } = useContext(WihshListContext)
+  const { wishlist, isInitialized } = useContext(WihshListContext)
 
-  if (typeof window === 'undefined') return <LoadingSpinner />
+  if (!isInitialized) return <LoadingSpinner />
 
   return (
-    <>
-      <Container>
-        {wishlist.length > 0 &&
-          wishlist.map((sku, index) => {
-            return <ProductCard key={index} sku={sku} />
-          })}
-
-        {wishlist.length === 0 && (
-          <NotFound msg="Nenhum produto adicionado à lista de desejos" />
-        )}
-      </Container>
-    </>
+    <Container>
+      {wishlist.length > 0 ? (
+        wishlist.map(({ sku }, index) => {
+          return <ProductCard key={index} sku={sku} />
+        })
+      ) : (
+        <NotFound msg="Nenhum produto adicionado à lista de desejos" />
+      )}
+    </Container>
   )
 }
 

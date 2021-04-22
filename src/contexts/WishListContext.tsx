@@ -27,6 +27,7 @@ type InitialStateType = {
   wishlist: WishlistType[]
   addProductToWishlist: React.Dispatch<DispatchType>
   removeProductFromWishlist: React.Dispatch<DispatchType>
+  isInitialized: boolean
 }
 
 const initialState = {
@@ -55,7 +56,12 @@ const WishListContextProvider = ({ children }) => {
 
   useEffect(() => {
     const currentData = JSON.parse(localStorage.getItem('wishlist'))
-    currentData.map(product => addProductToWishlist(product))
+    if (currentData === null) {
+      localStorage.setItem('wishlist', JSON.stringify(state.wishlist))
+    } else {
+      currentData.map(product => addProductToWishlist(product))
+    }
+
     setIsInitialized(true)
   }, [])
 
@@ -64,7 +70,8 @@ const WishListContextProvider = ({ children }) => {
       value={{
         wishlist: state.wishlist,
         addProductToWishlist,
-        removeProductFromWishlist
+        removeProductFromWishlist,
+        isInitialized
       }}
     >
       {children}

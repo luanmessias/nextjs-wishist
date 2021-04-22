@@ -21,11 +21,17 @@ function ProductCard({ sku }) {
   const [selectedWish, setSelectedWish] = useState(false)
   const { pathname } = useRouter()
   const { products } = productsList
+  const isFavorited = wishlist.find(product => product.sku === sku)
+
+  useEffect(() => {
+    if (isFavorited !== undefined) {
+      setSelectedWish(true)
+    }
+  }, [])
 
   if (!products) return <div></div>
 
-  const product = productsList.products.find(prod => prod.sku === sku)
-  const isFavorited = wishlist.find(product => product.sku === sku)
+  const product = products.find(prod => prod.sku === sku)
 
   const {
     availableSizes,
@@ -38,12 +44,6 @@ function ProductCard({ sku }) {
     title,
     style
   } = product
-
-  useEffect(() => {
-    if (isFavorited !== undefined) {
-      setSelectedWish(true)
-    }
-  }, [])
 
   const handleAddProduct = () => {
     if (isFavorited === undefined) {
