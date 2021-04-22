@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { deviceSizes } from '~/styles/device'
+import { deviceSizes, maxDevice } from '~/styles/device'
 
 export const Container = styled.div`
   display: flex;
@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   background-color: #f1f1f1;
+  padding: 10px 20px;
 `
 export const Content = styled.div`
   display: flex;

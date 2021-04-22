@@ -54,6 +54,8 @@ function Header(): JSX.Element {
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             <div />
+            <div />
+            <div />
           </MobMenu>
         </div>
         <div className="header__col--links" data-active={mobileMenu}>

@@ -20,8 +20,11 @@ export const Container = styled.header`
     height: auto;
   }
 
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 `
 export const Content = styled.div`
@@ -37,13 +40,14 @@ export const Content = styled.div`
     height: auto;
   }
 
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     flex-direction: row;
   }
 
   .header {
     &__col {
       &--logo {
+        margin-right: auto;
       }
       &--links {
         box-sizing: border-box;
@@ -59,7 +63,7 @@ export const Content = styled.div`
           margin: 10px 0px;
         }
 
-        @media ${maxDevice.mobileL} {
+        @media ${maxDevice.tabletS} {
           flex-direction: column-reverse;
           visibility: hidden;
           padding: 10px;
@@ -89,8 +93,10 @@ export const Content = styled.div`
 `
 export const Logo = styled(LogoSVG)`
   width: 150px;
+  height: 50px;
 
-  @media ${maxDevice.mobileL} {
+
+  @media ${maxDevice.tabletS} {
     width: 100px;
   }
 `
@@ -99,7 +105,7 @@ export const HeaderLinksList = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -118,7 +124,7 @@ export const HeaderInfo = styled.div`
   font-weight: 500;
   transition: all 0.3s;
 
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     align-items: flex-start;
     padding: 10px 5px;
     width: 100%;
@@ -142,7 +148,7 @@ export const HeaderLink = styled.a`
   transition: all 0.3s;
   position: relative;
 
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     align-items: flex-start;
     padding: 10px 5px;
     width: 100%;
@@ -165,47 +171,50 @@ export const MobMenu = styled.div`
   position: relative;
   ${defaultTransition}
 
-  &:before,
-  &:after,
   div {
+    position: absolute;
+    left: 0;
     width: 100%;
     height: 10%;
     background-color: #fff;
     ${defaultTransition}
+
+    &:nth-of-type(1) {
+      top: 0px;
+    }
+
+    &:nth-of-type(2) {
+      position: relative;
+    }
+
+    &:nth-of-type(3) {
+      bottom: 0px;
+    }
   }
 
-  &:before,
-  &:after {
-    position: absolute;
-    content: '';
-  }
-
-  &:before {
-    top: 0px;
-  }
-
-  &:after {
-    bottom: 0px;
-  }
-
-  @media ${maxDevice.mobileL} {
+  @media ${maxDevice.tabletS} {
     display: flex;
   }
 
   &[data-active='true'] {
     div {
-      visibility: hidden;
-      opacity: 0;
-    }
-    &:before {
+
+      &:nth-of-type(1) {
       position: absolute;
       top: 50%;
       transform: rotate(45deg);
-    }
-    &:after {
-      position: absolute;
-      top: 50%;
-      transform: rotate(-45deg);
+      }
+
+      &:nth-of-type(2) {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      &:nth-of-type(3) {
+        position: absolute;
+        top: 50%;
+        transform: rotate(-45deg);
+      }
     }
   }
 `

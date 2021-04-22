@@ -118,6 +118,7 @@ export const Container = styled.div`
 
       svg {
         width: 25px;
+        height: 25px;
         margin-right: 10px;
       }
     }
@@ -142,7 +143,6 @@ export const WishListButton = styled.div`
   .svgContainer {
     width: 15px;
     height: 15px;
-    position: absolute;
     z-index: 10;
     ${defaultTransition}
 

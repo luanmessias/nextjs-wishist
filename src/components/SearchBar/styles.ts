@@ -44,6 +44,7 @@ export const SearchResultContainer = styled.div`
   position: absolute;
   box-sizing: border-box;
   top: 85px;
+  left: 0;
   opacity: 0;
   visibility: hidden;
   width: 100%;

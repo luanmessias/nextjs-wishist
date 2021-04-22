@@ -12,7 +12,6 @@ const getApiData = (path: string): ApiData => {
   if (!path) {
     throw new Error('Path is required')
   }
-
   const url = baseUrl + path
 
   const { data, error } = useSWR(url, fetcher)
