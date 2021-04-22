@@ -1,7 +1,22 @@
 import React, { createContext, useEffect, useState, useReducer } from 'react'
 import WishlistReducer from '~/reducers/wishlistReducer'
 
-type WishlistType = number
+interface IProduct {
+  id: number
+  sku: number
+  title: string
+  description: string
+  availableSizes: number[] | string[]
+  style: string
+  price: number
+  installments: number
+  currencyId: string
+  currencyFormat: string
+  isFreeShipping: boolean
+  image: string
+}
+
+type WishlistType = IProduct
 
 type DispatchType = {
   type: string
@@ -10,9 +25,8 @@ type DispatchType = {
 
 type InitialStateType = {
   wishlist: WishlistType[]
-  dispatch: React.Dispatch<DispatchType>
-  addProductToWishlist: WishlistType[]
-  removeProductFromWishlist: WishlistType[]
+  addProductToWishlist: React.Dispatch<DispatchType>
+  removeProductFromWishlist: React.Dispatch<DispatchType>
 }
 
 const initialState = {
