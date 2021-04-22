@@ -1,5 +1,4 @@
-import React, { createContext, useState, useContext } from 'react'
-import getApiData from '~/services/api'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 
 interface ChildrenPropTtypes {
   children: React.ReactNode
@@ -44,14 +43,16 @@ const GetProductsProvider = ({
   children
 }: ChildrenPropTtypes): React.ReactElement => {
   const [productsList, setProductList] = useState([])
-  const { data, error } = getApiData('products')
 
-  if (error) return <h1>Erro ao carregar produtos</h1>
-  if (!data) return <div>Loading Data</div>
-
-  if (data && productsList.length === 0) {
-    setProductList(data)
-  }
+  useEffect(() => {
+    if (productsList.length === 0) {
+      fetch(
+        'https://run.mocky.io/v3/66063904-d43c-49ed-9329-d69ad44b885e/products'
+      )
+        .then(response => response.json())
+        .then(data => setProductList(data))
+    }
+  }, [])
 
   return (
     <GetProductsContext.Provider value={{ productsList }}>

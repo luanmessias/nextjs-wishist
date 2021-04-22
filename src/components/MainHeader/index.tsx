@@ -16,7 +16,7 @@ import LocationSVG from '~/assets/svg/location'
 import HeartSVG from '~/assets/svg/heart'
 import PhoneSVG from '~/assets/svg/phone'
 
-function Header(): JSX.Element {
+function MainHeader(): JSX.Element {
   const { wishlist } = useContext(WihshListContext)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [wishNumber, setWishNumber] = useState(false)
@@ -75,9 +75,9 @@ function Header(): JSX.Element {
 
             <Link href="wishlist">
               <HeaderLink href="">
-                <WishListLenght data-active={wishNumber}>
+                {/* <WishListLenght data-active={wishNumber}>
                   {wishlist.length}
-                </WishListLenght>
+                </WishListLenght> */}
                 <HeartSVG />
                 <span>Lista de desejos</span>
               </HeaderLink>
@@ -92,4 +92,4 @@ function Header(): JSX.Element {
   )
 }
 
-export default Header
+export default MainHeader

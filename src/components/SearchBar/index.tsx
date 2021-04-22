@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import {
   Container,
@@ -10,21 +10,22 @@ import {
 import SearchSVG from '~/assets/svg/search'
 import { useGetProductsContext } from '~/contexts/GetProductsContext'
 
-const SearchBar = (): JSX.Element => {
+function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('')
   const [showResult, setShowResult] = useState(false)
   const [searchResults, setSearchResults] = useState([])
-  const { productsList }: { productsList } = useGetProductsContext()
+  const { productsList } = useGetProductsContext()
+  const { products } = productsList
 
-  const handleChange = event => {
-    const inputValue = event.target.value.toLowerCase()
-    setSearchTerm(inputValue)
-    setSearchResults([])
-  }
-
+  const isFirstRun = useRef(true)
   useEffect(() => {
-    const results = productsList.products.filter(
-      ({ title }: { title: string }) => title.toLowerCase().includes(searchTerm)
+    if (isFirstRun.current) {
+      isFirstRun.current = false
+      return
+    }
+
+    const results = products.filter(({ title }) =>
+      title.toLowerCase().includes(searchTerm)
     )
 
     if (searchTerm === '') {
@@ -35,6 +36,14 @@ const SearchBar = (): JSX.Element => {
       setShowResult(true)
     }
   }, [searchTerm])
+
+  if (!products) return <></>
+
+  const handleChange = event => {
+    const inputValue = event.target.value.toLowerCase()
+    setSearchTerm(inputValue)
+    setSearchResults([])
+  }
 
   const searchResultRender = searchResults.map(
     ({ title, style, image }, index) => {

@@ -3,16 +3,19 @@ import { Container } from '~/styles/pages/wishlist'
 import { WihshListContext } from '~/contexts/WishListContext'
 import ProductCard from '~/components/ProductCard'
 import NotFound from '~/components/NotFound'
+import LoadingSpinner from '~/components/LoadingSpinner'
 
 function Wishlist() {
   const { wishlist } = useContext(WihshListContext)
+
+  if (typeof window === 'undefined') return <LoadingSpinner />
 
   return (
     <>
       <Container>
         {wishlist.length > 0 &&
-          wishlist.map(sku => {
-            return <ProductCard key={sku} sku={sku} />
+          wishlist.map((sku, index) => {
+            return <ProductCard key={index} sku={sku} />
           })}
 
         {wishlist.length === 0 && (

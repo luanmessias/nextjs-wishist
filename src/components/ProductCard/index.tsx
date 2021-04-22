@@ -15,9 +15,13 @@ function ProductCard({ sku }) {
   const { wishlist, dispatch } = useContext(WihshListContext)
   const { productsList } = useGetProductsContext()
   const [selectedWish, setSelectedWish] = useState(false)
-  const product = productsList.products.find(prod => prod.sku === sku)
   const isFavorited = wishlist.find(e => e === sku)
   const { pathname } = useRouter()
+  const { products } = productsList
+
+  if (!products) return <div></div>
+
+  const product = productsList.products.find(prod => prod.sku === sku)
 
   const {
     availableSizes,

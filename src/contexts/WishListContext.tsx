@@ -28,8 +28,6 @@ const WishListContextProvider = ({ children }) => {
     }
   })
 
-  if (!wishlist) return <div>Loading LocalStorage</div>
-
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
   }, [wishlist])

@@ -4,7 +4,7 @@ import { mainColor, defaultTransition } from '~/styles/placeholders'
 import { darken } from 'polished'
 import LogoSVG from '~/assets/svg/logo'
 
-export const Container = styled.header`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,6 @@ export const Content = styled.div`
 export const Logo = styled(LogoSVG)`
   width: 150px;
   height: 50px;
-
 
   @media ${maxDevice.tabletS} {
     width: 100px;
@@ -198,11 +197,10 @@ export const MobMenu = styled.div`
 
   &[data-active='true'] {
     div {
-
       &:nth-of-type(1) {
-      position: absolute;
-      top: 50%;
-      transform: rotate(45deg);
+        position: absolute;
+        top: 50%;
+        transform: rotate(45deg);
       }
 
       &:nth-of-type(2) {
