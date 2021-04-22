@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useReducer } from 'react'
-import { wishlistReducer } from '~/reducers/wishlistReducer'
+import React, { createContext, useEffect, useState, useReducer } from 'react'
+import WishlistReducer from '~/reducers/wishlistReducer'
 
 type WishlistType = number
 
@@ -11,29 +11,48 @@ type DispatchType = {
 type InitialStateType = {
   wishlist: WishlistType[]
   dispatch: React.Dispatch<DispatchType>
+  addProductToWishlist: WishlistType[]
+  removeProductFromWishlist: WishlistType[]
 }
 
 const initialState = {
-  wishlist: [],
-  dispatch: null
+  wishlist: []
 }
 
-export const WihshListContext = createContext<InitialStateType>(initialState)
+export const WihshListContext = createContext<InitialStateType>(null)
 
 const WishListContextProvider = ({ children }) => {
-  const [wishlist, dispatch] = useReducer(wishlistReducer, [], () => {
-    if (typeof window !== 'undefined') {
-      const localData = localStorage.getItem('wishlist')
-      return localData ? JSON.parse(localData) : []
-    }
-  })
+  const [isInitialized, setIsInitialized] = useState(false)
+  const [state, dispatch] = useReducer(WishlistReducer, initialState)
 
   useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist))
-  }, [wishlist])
+    if (isInitialized) {
+      localStorage.setItem('wishlist', JSON.stringify(state.wishlist))
+    }
+  }, [state])
+
+  const addProductToWishlist = product => {
+    dispatch({ type: 'ADD_PRODUCT_TO_WISHLIST', payload: product })
+  }
+
+  const removeProductFromWishlist = product => {
+    dispatch({ type: 'REMOVE_PRODUCT_FROM_WISHLIST', payload: product })
+  }
+
+  useEffect(() => {
+    const currentData = JSON.parse(localStorage.getItem('wishlist'))
+    currentData.map(product => addProductToWishlist(product))
+    setIsInitialized(true)
+  }, [])
 
   return (
-    <WihshListContext.Provider value={{ wishlist, dispatch }}>
+    <WihshListContext.Provider
+      value={{
+        wishlist: state.wishlist,
+        addProductToWishlist,
+        removeProductFromWishlist
+      }}
+    >
       {children}
     </WihshListContext.Provider>
   )

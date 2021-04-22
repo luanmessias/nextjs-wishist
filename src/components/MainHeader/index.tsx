@@ -75,9 +75,9 @@ function MainHeader(): JSX.Element {
 
             <Link href="wishlist">
               <HeaderLink href="">
-                {/* <WishListLenght data-active={wishNumber}>
+                <WishListLenght data-active={wishNumber}>
                   {wishlist.length}
-                </WishListLenght> */}
+                </WishListLenght>
                 <HeartSVG />
                 <span>Lista de desejos</span>
               </HeaderLink>

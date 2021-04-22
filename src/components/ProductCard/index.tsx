@@ -12,16 +12,20 @@ import HeartSVG from '~/assets/svg/heart'
 import RemoveSVG from '~/assets/svg/remove'
 
 function ProductCard({ sku }) {
-  const { wishlist, dispatch } = useContext(WihshListContext)
+  const {
+    wishlist,
+    addProductToWishlist,
+    removeProductFromWishlist
+  } = useContext(WihshListContext)
   const { productsList } = useGetProductsContext()
   const [selectedWish, setSelectedWish] = useState(false)
-  const isFavorited = wishlist.find(e => e === sku)
   const { pathname } = useRouter()
   const { products } = productsList
 
   if (!products) return <div></div>
 
   const product = productsList.products.find(prod => prod.sku === sku)
+  const isFavorited = wishlist.find(product => product.sku === sku)
 
   const {
     availableSizes,
@@ -44,11 +48,11 @@ function ProductCard({ sku }) {
   const handleAddProduct = () => {
     if (isFavorited === undefined) {
       setSelectedWish(true)
-      dispatch({ type: 'ADD_PRODUCT', sku })
+      addProductToWishlist(product)
       toast(`${title} adicionado a lista de desejos com sucesso!`)
     } else {
       setSelectedWish(false)
-      dispatch({ type: 'REMOVE_PRODUCT', sku })
+      removeProductFromWishlist(product)
       toast(`${title} removido da lista de desejos com sucesso!`)
     }
   }
