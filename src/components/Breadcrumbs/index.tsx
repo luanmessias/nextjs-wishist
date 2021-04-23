@@ -13,9 +13,30 @@ const convertBreadcrumb = string => {
   return <div>{breadcrumb}</div>
 }
 
-export const Breadcrumbs = () => {
+const Breadcrumbs = () => {
   const breadRouter = useRouter()
   const [breadcrumbs, setBreadcrumbs] = useState(null)
+
+  useEffect(() => {
+    const handleRouteChange = url => {
+      const linkPath = url.split('/')
+      linkPath.shift()
+      const pathArray = linkPath.map((path, i) => {
+        return {
+          breadcrumb: path,
+          href: '/' + linkPath.slice(0, i + 1).join('/')
+        }
+      })
+
+      setBreadcrumbs(pathArray)
+    }
+
+    breadRouter.events.on('routeChangeStart', handleRouteChange)
+
+    return () => {
+      breadRouter.events.off('routeChangeStart', handleRouteChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (breadRouter) {
@@ -31,7 +52,7 @@ export const Breadcrumbs = () => {
 
       setBreadcrumbs(pathArray)
     }
-  }, [breadRouter])
+  }, [])
 
   if (!breadcrumbs) {
     return null

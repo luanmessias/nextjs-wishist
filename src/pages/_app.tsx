@@ -2,7 +2,7 @@ import { AppProps } from 'next/app'
 import GlobalStyle from '~/styles/global'
 import MainHeader from '~/components/MainHeader'
 import { GetProductsProvider } from '~/contexts/GetProductsContext'
-import WishListProvider from '~/contexts/WishListContext'
+import { WishListProvider } from '~/contexts/WishListContext'
 import NextNprogress from 'nextjs-progressbar'
 import PageTitle from '~/components/PageTitle'
 import { ToastContainer } from 'react-toastify'
@@ -20,6 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => {
       <GlobalStyle />
 
       <ToastContainer
+        data-testid="ToastContainer"
         position="bottom-right"
         autoClose={1500}
         hideProgressBar={false}

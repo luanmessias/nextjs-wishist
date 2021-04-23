@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Container,
   Content,
@@ -10,14 +10,14 @@ import {
   WishListLenght
 } from './styles'
 import Link from 'next/link'
-import { WihshListContext } from '~/contexts/WishListContext'
+import { useWishlistContext } from '~/contexts/WishListContext'
 import SearchBar from '~/components/SearchBar'
 import LocationSVG from '~/assets/svg/location'
 import HeartSVG from '~/assets/svg/heart'
 import PhoneSVG from '~/assets/svg/phone'
 
-function MainHeader(): JSX.Element {
-  const { wishlist } = useContext(WihshListContext)
+const MainHeader = (): JSX.Element => {
+  const { wishlist } = useWishlistContext()
   const [mobileMenu, setMobileMenu] = useState(false)
   const [wishNumber, setWishNumber] = useState(false)
 

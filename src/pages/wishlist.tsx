@@ -1,17 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Container } from '~/styles/pages/wishlist'
-import { WihshListContext } from '~/contexts/WishListContext'
+import { useWishlistContext } from '~/contexts/WishListContext'
 import ProductCard from '~/components/ProductCard'
 import NotFound from '~/components/NotFound'
 import LoadingSpinner from '~/components/LoadingSpinner'
 
-function Wishlist() {
-  const { wishlist, isInitialized } = useContext(WihshListContext)
+const Wishlist = () => {
+  const { wishlist, isInitialized } = useWishlistContext()
 
   if (!isInitialized) return <LoadingSpinner />
 
   return (
-    <Container>
+    <Container data-testid="WishlistPage">
       {wishlist.length > 0 ? (
         wishlist.map(({ sku }, index) => {
           return <ProductCard key={index} sku={sku} />

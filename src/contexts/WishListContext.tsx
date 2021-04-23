@@ -1,12 +1,18 @@
-import React, { createContext, useEffect, useState, useReducer } from 'react'
+import React, {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useReducer
+} from 'react'
 import WishlistReducer from '~/reducers/wishlistReducer'
 
-interface IProduct {
+export interface IProduct {
   id: number
   sku: number
   title: string
   description: string
-  availableSizes: number[] | string[]
+  availableSizes: AvailableSizes
   style: string
   price: number
   installments: number
@@ -16,27 +22,38 @@ interface IProduct {
   image: string
 }
 
-type WishlistType = IProduct
-
-type DispatchType = {
-  type: string
-  sku: number
+interface AvailableSizes {
+  S?: number | null
+  G?: number | null
+  GG?: number | null
+  GGG?: number | null
+  40?: number | null
+  43?: number | null
+  41?: number | null
 }
 
-type InitialStateType = {
-  wishlist: WishlistType[]
+interface DispatchType {
+  type: string
+  product: IProduct
+}
+
+interface InitialStateType {
+  wishlist: IProduct[]
   addProductToWishlist: React.Dispatch<DispatchType>
   removeProductFromWishlist: React.Dispatch<DispatchType>
   isInitialized: boolean
 }
 
 const initialState = {
-  wishlist: []
+  wishlist: [],
+  isInitialized: false,
+  addProductToWishlist: null,
+  removeProductFromWishlist: null
 }
 
-export const WihshListContext = createContext<InitialStateType>(null)
+const WihshListContext = createContext<InitialStateType>(null)
 
-const WishListContextProvider = ({ children }) => {
+const WishListProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false)
   const [state, dispatch] = useReducer(WishlistReducer, initialState)
 
@@ -79,4 +96,14 @@ const WishListContextProvider = ({ children }) => {
   )
 }
 
-export default WishListContextProvider
+const useWishlistContext = () => {
+  const context = useContext(WihshListContext)
+  if (!context) {
+    throw new Error(
+      'useGetProductsContext must be used within a GetProductsProvider'
+    )
+  }
+  return context
+}
+
+export { WishListProvider, useWishlistContext, WihshListContext }

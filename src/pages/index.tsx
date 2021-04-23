@@ -4,14 +4,14 @@ import { useGetProductsContext } from '~/contexts/GetProductsContext'
 import ProductCard from '~/components/ProductCard'
 import LoadingSpinner from '~/components/LoadingSpinner'
 
-function Home() {
+const Home = () => {
   const { productsList } = useGetProductsContext()
   const { products } = productsList
 
   if (!products) return <LoadingSpinner />
 
   return (
-    <Container>
+    <Container data-testid="HomePage">
       {productsList.products.map(({ sku }, index) => {
         return <ProductCard key={index} sku={sku} />
       })}

@@ -10,7 +10,7 @@ import {
 import SearchSVG from '~/assets/svg/search'
 import { useGetProductsContext } from '~/contexts/GetProductsContext'
 
-function SearchBar() {
+const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [showResult, setShowResult] = useState(false)
   const [searchResults, setSearchResults] = useState([])
@@ -63,7 +63,7 @@ function SearchBar() {
   )
 
   return (
-    <Container>
+    <Container data-testid="SearchBar">
       <SearchBarContainer>
         <SearchSVG />
         <SearchInput
@@ -72,7 +72,10 @@ function SearchBar() {
           placeholder="Busca"
         />
       </SearchBarContainer>
-      <SearchResultContainer data-active={showResult}>
+      <SearchResultContainer
+        data-testid="SearchResult"
+        data-active={showResult}
+      >
         {searchResultRender}
       </SearchResultContainer>
     </Container>

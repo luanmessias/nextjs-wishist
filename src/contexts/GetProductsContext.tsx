@@ -3,16 +3,10 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 interface ChildrenPropTtypes {
   children: React.ReactNode
 }
-
-interface ContextType {
-  productsList: ProductsList | any
+export interface ProductsList {
+  products: ProductsEntity[]
 }
-
-interface ProductsList {
-  products: Product[]
-}
-
-interface Product {
+export interface ProductsEntity {
   id: number
   sku: number
   title: string
@@ -26,8 +20,7 @@ interface Product {
   isFreeShipping: boolean
   image: string
 }
-
-interface AvailableSizes {
+export interface AvailableSizes {
   S?: number | null
   G?: number | null
   GG?: number | null
@@ -37,7 +30,7 @@ interface AvailableSizes {
   41?: number | null
 }
 
-const GetProductsContext = createContext<ContextType>(null)
+const GetProductsContext = createContext(null)
 
 const GetProductsProvider = ({
   children
@@ -61,7 +54,7 @@ const GetProductsProvider = ({
   )
 }
 
-const useGetProductsContext = (): ContextType => {
+const useGetProductsContext = () => {
   const context = useContext(GetProductsContext)
   if (!context) {
     throw new Error(

@@ -3,7 +3,7 @@ import { Container } from './styles'
 
 const LoadingSpinner = () => {
   return (
-    <Container>
+    <Container data-testid="LoadingSpinner">
       <div></div>
       <div></div>
     </Container>

@@ -11,7 +11,7 @@ import TruckSVG from '~/assets/svg/truck'
 import HeartSVG from '~/assets/svg/heart'
 import RemoveSVG from '~/assets/svg/remove'
 
-function ProductCard({ sku }) {
+const ProductCard = ({ sku }) => {
   const {
     wishlist,
     addProductToWishlist,
@@ -64,7 +64,11 @@ function ProductCard({ sku }) {
   return (
     <>
       <Container data-testid="ProductCard">
-        <WishListButton onClick={handleAddProduct} data-selected={selectedWish}>
+        <WishListButton
+          data-testid="WishListButton"
+          onClick={handleAddProduct}
+          data-selected={selectedWish}
+        >
           <div className="svgContainer">
             {pathname !== '/wishlist' && (
               <div className="svgContainer__add">

@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { Container } from './styles'
 import BlockSVG from '~/assets/svg/block'
 
-function NotFound({ msg }) {
+const NotFound = ({ msg }) => {
   return (
     <Container data-testid="NotFound">
-      <BlockSVG />
+      <BlockSVG data-testid="BlockSVG" />
       <div>{msg}</div>
       <Link href="/">
         <a href="">VOLTAR PARA PÁGINA PRINCIPAL</a>

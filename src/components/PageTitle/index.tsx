@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { Container, Content, Title } from './styles'
 import BreadCrumbs from '~/components/Breadcrumbs'
 
-function PageTitle() {
+const PageTitle = () => {
   const { pathname } = useRouter()
 
   const getTitle = () => {
@@ -21,7 +21,7 @@ function PageTitle() {
   }
 
   return (
-    <Container>
+    <Container data-testid="PageTitle">
       <Content>
         <Title>{getTitle()}</Title>
         <BreadCrumbs />

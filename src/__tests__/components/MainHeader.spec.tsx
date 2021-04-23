@@ -1,14 +1,17 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { GetProductsContext } from '~/contexts/GetProductsContext'
+import { WishListProvider } from '~/contexts/WishListContext'
 import { productsList } from '~/mocks/productsList'
-import Header from '~/components/header'
+import MainHeader from '~/components/MainHeader'
 
 const renderComponent = () => {
   render(
-    <GetProductsContext.Provider value={{ productsList }}>
-      <Header />
-    </GetProductsContext.Provider>
+    <WishListProvider>
+      <GetProductsContext.Provider value={{ productsList }}>
+        <MainHeader />
+      </GetProductsContext.Provider>
+    </WishListProvider>
   )
 }
 
